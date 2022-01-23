@@ -14,9 +14,9 @@ class QuestionController {
     }
 
     /**
-    * @Route("/questions/question-1")
+    * @Route("/questions/{slug}")
     */
-    public function show() {
-        return new Response('future page to show a question');
+    public function show($slug) {
+        return new Response(sprintf('future page to show the question is "%s"', $slug));
     }
 }
