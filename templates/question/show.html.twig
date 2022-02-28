@@ -8,6 +8,11 @@
 {% block body %}
 <h1>{{ question }}</h1>
 
+{# run 'composer require profiler --dev' and 'composer require debug' to get access to dump() #}
+{# symfony-profiler installs the profiler on the site, debug adds more stuff to it #}
+{# {{dump()}} #}
+
+
 <h2>Answers: {{ answers|length }}</h2>
 
 <ul>
