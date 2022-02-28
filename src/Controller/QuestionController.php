@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class QuestionController {
+
+// AbstractController gives us shortcut methods like render()
+class QuestionController extends AbstractController {
     /**
      * @Route("/")
      */
@@ -17,6 +20,20 @@ class QuestionController {
     * @Route("/questions/{slug}")
     */
     public function show($slug) {
-        return new Response(sprintf('future page to show the question is "%s"', $slug));
+        // first argument is the template to render, the second arg is an array of variables we're going to pass into the template
+        // the render method returns a response object with html inside
+
+        $answers = [
+            'answer1',
+            'answer2',
+            'answer3'
+        ];
+
+        return $this->render('question/show.html.twig', [
+            'question' => ucwords(str_replace('-', ' ', $slug)),
+            'answers' => $answers
+        ]);
+
+ 
     }
 }
